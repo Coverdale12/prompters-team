@@ -12,6 +12,10 @@
   @include flexible();
   height: 100%;
 }
+#root:has(.main-aside){
+  @include flexible();
+
+}
 html, body{
   background-color: $color-magenta;
   height: 100%;
@@ -33,5 +37,11 @@ html, body{
 .content{
   @include flexible(column, $al-items: center);
   width: 100%;
+  &.main{
+    background-color: $color-gray;
+    border-radius: $border-radius-base;
+    margin: 1rem;
+  }
 }
+
 // components

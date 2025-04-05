@@ -1,0 +1,9 @@
+@import "../../../../sass/abstracts/abstracts";
+
+.app-card{
+  padding: 1.2rem;
+  border-radius: $border-radius-base;
+  border: $color-gray-dark 2px solid;
+  width: 100%;
+  @include hoverEffect(background-color, $color-pink);
+}

@@ -1,0 +1,11 @@
+@import "../../../sass/abstracts/abstracts";
+
+.field-search{
+  &__input{
+    background-color: $color-green-light;
+    border: none;
+    padding: 1rem;
+    padding-right: 0;
+    border-radius: 1rem;
+  }
+}
