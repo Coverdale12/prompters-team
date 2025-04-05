@@ -17,5 +17,9 @@ $transition-duration-button-slow: 0.3s;
 
 // borders
 $border-radius-base: 20px; 
-$border-radius-middle: 15px;
+$border-radius-middle: 1rem;
 // media-queries
+
+// layout
+$container-max-width: 1920px;
+$container-padding-x: 15px;

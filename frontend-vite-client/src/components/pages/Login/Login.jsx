@@ -6,37 +6,44 @@ import DropList from "../../ui/DropList/DropList"
 import Checkbox from "../../ui/Checkbox/Checkbox"
 
 import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
 
 // react-router
-import { Link } from "react-router"
 
-export default function Login() {
-  const [isWindow, setIsWindow] = useState(false)
 
-  
+export default function Login({ isRegistration = false }) {
+  const [isWindow, setIsWindow] = useState(isRegistration)
+  const navigate = useNavigate();
+
+  function navigateTo(path) {
+    navigate(path)
+  }
   return (
-    <section className="section login">
-      <div className="login__wrapper container">
-        <nav className="login__navigation">
-          <button className={`login__navigation button ${isWindow && "active"}`}
-            onClick={(e) => {
-              setIsWindow(true)
-              changeWindow(e)
-            }}>
-            Регистрация
-          </button>
-          <button className={`login__navigation button ${!isWindow && "active"}`}
-            onClick={(e) => {
-              setIsWindow(false)
-              changeWindow(e)
-            }}>
-            Авторизация
-          </button>
-        </nav>
-        {isWindow ? <RegistrationForm /> : <LoginForm />}
+    <main className="content">
+      <section className="section login">
+        <div className="login__wrapper container">
+          <nav className="login__navigation">
+            <button className={`login__navigation button ${isWindow && "active"}`}
+              onClick={(e) => {
+                setIsWindow(true);
+                navigateTo("/registration");
+              }}>
+              Регистрация
+            </button>
+            <button className={`login__navigation button ${!isWindow && "active"}`}
+              onClick={(e) => {
+                setIsWindow(false);
+                navigateTo("/login");
+              }}>
+              Авторизация
+            </button>
+          </nav>
+          {isWindow ? <RegistrationForm /> : <LoginForm />}
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </main >
+
   )
 }
 

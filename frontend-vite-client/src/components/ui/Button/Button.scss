@@ -12,4 +12,8 @@
   border-radius: $border-radius-middle;
   @include hoverEffect(background-color, darken($color-green-light, 20%));
   color: $color-gray;
+  &.purple{
+    background-color: $color-magenta;
+    @include hoverEffect(background-color, darken($color-magenta, 20%));
+  }
 }

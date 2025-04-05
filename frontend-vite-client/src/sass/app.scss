@@ -23,5 +23,11 @@ html, body{
 }
 .container{
   margin-inline: auto;
+  max-width: $container-max-width + ($container-padding-x * 2);
+  padding-inline: 15px;
+}
+.content{
+  @include flexible(column, $al-items: center);
+  width: 100%;
 }
 // components

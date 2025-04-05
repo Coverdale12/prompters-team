@@ -1,8 +1,8 @@
 import "./Button.scss"
 
-export default function Button({children, typeButton}){
+export default function Button({children, typeButton, color}){
   return(
-    <button className="button" type={typeButton}>
+    <button className={color ? `button ${color}` : "button"} type={typeButton}>
       {children}
     </button>
   )
