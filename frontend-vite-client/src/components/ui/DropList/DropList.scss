@@ -1,0 +1,13 @@
+@import "../../../sass/abstracts/abstracts";
+
+.droplist{
+  @include flexible();
+  column-gap: 15px;
+  font-family: $font-family-base;
+  &__input{
+    border-radius: 30px;
+    border: none;
+    background-color: $color-green-light;
+    padding-right: 15px;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../../sass/abstracts/abstracts";
+
+.checkbox {
+  @include flexible($al-items: center);
+  font-family: $font-family-base;
+  font-size: 1.2rem;
+  column-gap: 0.5rem;
+  &__input {
+    @include flexible(row, center, center);
+    flex-shrink: 0;
+    width: 18px;
+    border-radius: 5px;
+    height: 18px;
+    background-color: $color-green-light;
+    appearance: none;
+    transition-duration: $transition-duration-button;
+    @include hoverEffect(background-color, darken($color-green-light, 10%));
+  }
+
+  &__input:checked::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 12px;
+    border: solid $color-gray;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}

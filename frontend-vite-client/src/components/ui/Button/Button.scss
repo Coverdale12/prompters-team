@@ -1,0 +1,15 @@
+@import "../../../sass/abstracts/abstracts";
+
+.button{
+  cursor: pointer;
+  user-select: none;
+  @include flexible();
+  font-family: $font-family-base;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  border: none;
+  background-color: $color-green-light;
+  border-radius: $border-radius-middle;
+  @include hoverEffect(background-color, darken($color-green-light, 20%));
+  color: $color-gray;
+}

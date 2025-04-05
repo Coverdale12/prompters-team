@@ -1,23 +1,21 @@
 //fonts
-$font-family-base: "Raleway", Arial, sans-serif;
-$font-family-console: "Consolas", sans-serif;
+$font-family-base: "Montserrat", Arial, sans-serif;
 
 
 //colors
 $color-light: #FFFFFF;
-
-$color-grey-light-very: #e7e7e7;
-$color-grey: #7C7C7C;
-$color-grey-light: #B4ABAB;
-$color-dark-light: #535353;
-$color-dark-less: #343232;
+$color-gray: #F8F5F0;
+$color-gray-dark: #B3B3B3;
+$color-green-light: #AFC674; 
+$color-pink: #FFE2E2;
 $color-dark: #000000;
-$color-green: #16B900; 
-
-$color-red: #940000;
-
+$color-magenta: #A5A1DE; 
+$color-red:  #960000;
 //animations
 $transition-duration-button: 0.2s;
 $transition-duration-button-slow: 0.3s;
 
+// borders
+$border-radius-base: 20px; 
+$border-radius-middle: 15px;
 // media-queries
