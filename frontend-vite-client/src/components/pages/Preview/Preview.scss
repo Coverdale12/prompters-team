@@ -1,5 +1,16 @@
 @import "../../../sass/abstracts/abstracts";
 
+@keyframes spawn-element {
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .preview{
   @include flexible($just-cont: center);
   width: 100%;
@@ -10,6 +21,9 @@
   &__image{
     @include flexible();
     width: 100%;
+    opacity: 0;
+    max-width: 700px;
+    animation: spawn-element 0.8s linear forwards;
   }
   &__title{
     @include flexible(column);
@@ -18,19 +32,34 @@
     color: $color-gray;
     font-weight: 700;
     font-size: 8rem;
-    @media screen and (width < 1920px){
-      font-size: clamp(6rem, 10vw ,8rem);
-      &.mini{
-        font-size: clamp(3rem, 7vw,4rem);
-      }
-    }
+    animation: spawn-element 0.6s linear forwards;
     &.mini{
       font-size: 4rem;
+      animation: spawn-element 0.9s linear forwards;
     }
+    @media screen and (width < 1920px){
+      font-size: clamp(6rem, 6.6667vw, 8rem);
+      &.mini{
+        font-size: clamp(2rem, 4vw, 4rem);
+      }
+    }
+    @media screen and (width < 1100px){
+      font-size: clamp(3rem, 5vw, 6rem);
+      &.mini{
+        font-size: 2rem;
+      }
+    }
+
   }
   &__body{
     @include flexible(row, $al-items: center);
     width: 100%;
+    @media screen and (width < 1100px){
+      @include flexible(column-reverse);
+    }
+  }
+  &__link{
+    text-decoration: none;
   }
   .logotype{
     margin: 20px;
@@ -39,5 +68,11 @@
     width: fit-content;
     font-size: 4rem;
     margin-inline: auto;
+    margin-top: 1rem;
+    animation: spawn-element 1.2s linear forwards;
+    @media screen and (width < 800px){
+      $vw-value: 4*16/800*100;
+      font-size: clamp(2rem, #{$vw-value}vw, 4rem);
+    }
   }
 }

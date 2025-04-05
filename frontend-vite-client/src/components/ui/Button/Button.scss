@@ -9,11 +9,13 @@
   font-weight: 700;
   border: none;
   background-color: $color-green-light;
+  transition-duration: $transition-duration-button;
   border-radius: $border-radius-middle;
   @include hoverEffect(background-color, darken($color-green-light, 20%));
   color: $color-gray;
   &.purple{
     background-color: $color-magenta;
     @include hoverEffect(background-color, darken($color-magenta, 20%));
+    border: 9px solid $color-light;
   }
 }

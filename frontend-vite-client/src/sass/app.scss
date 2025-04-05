@@ -15,6 +15,10 @@
 html, body{
   background-color: $color-magenta;
   height: 100%;
+  background-image: url('../assets/images/background.svg') ;
+  background-attachment:fixed;
+  background-size:cover; 
+  background-position: -100% -100%;
 }
 .section.login{
   @include flexible();
