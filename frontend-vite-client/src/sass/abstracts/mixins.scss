@@ -1,0 +1,56 @@
+@mixin flexible ($fl-dir: row, $just-cont: flex-start, $al-items: stretch, $wr: nowrap) {
+  display: flex;
+  justify-content: $just-cont;
+  align-items: $al-items;
+  flex-wrap: $wr;
+  flex-direction: $fl-dir;
+}// миксин для flex-layout свойств
+
+@mixin smothOpen(){
+  transition: 
+    opacity 0.3s ease-in-out,
+    transform 0.2s ease-in;
+}// миксин для плавного перехода
+@mixin circle($size){
+  border-radius: 50%;
+  width: #{$size};
+  height: #{$size};
+}// миксин на создание круга
+@mixin hoverEffect($param, $args, $pseudo: false){
+  @if $pseudo == false{
+    @media (hover: hover) {
+      &:hover{
+        #{$param}: $args;
+      }
+    }
+    @media (hover: none) {
+      &:active{
+        #{$param}: $args;
+      }
+    }
+  } @else{
+    @media (hover: hover) {
+      &:hover{
+        &::#{$pseudo}{
+          #{$param}: $args;
+        }
+      }
+    }
+    @media (hover: none) {
+      &:active{
+        &::#{$pseudo}{
+          #{$param}: $args;
+        }
+      }
+    }
+  }
+  
+}// миксин для улучшения работы hover эффектов на всех устройствах
+@mixin size($size){
+  width: $size;
+  height: $size;
+}// миксин для для того шоб height и width 1:1 типа
+@mixin buttonStandart(){
+  border: none;
+  cursor: pointer;
+}
