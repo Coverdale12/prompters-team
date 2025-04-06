@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+admin.site.register(PrivateMessage)
+admin.site.register(Topic)
+admin.site.register(TopicMessage)
+admin.site.register(File)
+admin.site.register(PrivateMessageHasFile)
+admin.site.register(TopicMessageHasFile)
+admin.site.register(Notification)
