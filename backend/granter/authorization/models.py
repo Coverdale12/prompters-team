@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class Profile(models.Model):
     username = models.CharField(max_length=16)
     name = models.CharField(max_length=32)
     telegram_id = models.IntegerField(null=True)
