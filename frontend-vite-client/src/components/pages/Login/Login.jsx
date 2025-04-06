@@ -8,6 +8,7 @@ import Checkbox from "../../ui/Checkbox/Checkbox"
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 
+import { loginAPI } from "../../../service/FetchAPI"
 // react-router
 
 
@@ -71,8 +72,15 @@ function RegistrationForm() {
   )
 }
 function LoginForm() {
+  function handlerSumbitLogin(e) {
+    e.preventDefault()
+    const form = e.target
+    loginAPI(form.email.value, form.password.value).then(data => {
+      console.log(data)
+    })
+  }
   return (
-    <form action="http://localhost:8000/auth" className="form login">
+    <form onSubmit={handlerSumbitLogin} className="form login">
       <Entry
         id="email"
         labelText="Введите почту"
