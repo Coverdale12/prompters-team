@@ -13,4 +13,14 @@
   &__item{
     @include flexible();
   }
+  .error-log{
+    color: $color-dark;
+    font-size: 4rem;
+    font-family: $font-family-base;
+    margin: auto;
+    @media screen and (width < 1920px) {
+      $value: 4*16/1920*100;
+      font-size: clamp(2rem, #{$value}vw,4rem);
+    }
+  }
 }

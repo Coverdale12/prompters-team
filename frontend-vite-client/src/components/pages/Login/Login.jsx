@@ -5,20 +5,16 @@ import Button from "../../ui/Button/Button"
 import DropList from "../../ui/DropList/DropList"
 import Checkbox from "../../ui/Checkbox/Checkbox"
 
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate, Link } from "react-router-dom"
 
 import { loginAPI } from "../../../service/FetchAPI"
-// react-router
 
+import { AuthContext } from "../../../context/AuthContext"
 
 export default function Login({ isRegistration = false }) {
-  const [isWindow, setIsWindow] = useState(isRegistration)
-  const navigate = useNavigate();
-
-  function navigateTo(path) {
-    navigate(path)
-  }
+  const [isWindow, setIsWindow] = useState(isRegistration);
+  const navigateTo = useNavigate()
   return (
     <main className="content">
       <section className="section login">
@@ -72,11 +68,29 @@ function RegistrationForm() {
   )
 }
 function LoginForm() {
+  const { getAuthLS, setAuthLS } = useContext(AuthContext)
+
+  const [error, setError] = useState(false)
+
+  const navigate = useNavigate();
+
+
   function handlerSumbitLogin(e) {
     e.preventDefault()
     const form = e.target
+
+
     loginAPI(form.email.value, form.password.value).then(data => {
-      console.log(data)
+      setAuthLS(data.token)
+      navigate("/user")
+    }).catch((err) => {
+      if (err.status === 401) {
+        setError("Неправильный логин или пароль")
+        return
+      }
+      setError("Упс... Ошибка при входе!")
+
+
     })
   }
   return (
@@ -84,7 +98,8 @@ function LoginForm() {
       <Entry
         id="email"
         labelText="Введите почту"
-        placeholderText="mail@example.com" />
+        placeholderText="mail@example.com"
+        errorField={error && error} />
       <Entry
         id="password"
         typeEntry="password"

@@ -48,11 +48,11 @@ export default function App() {
 
 
 function ProtectedRoutes(){
-  const {isAuth, setAuth} = useContext(AuthContext);
+  const {getAuthLS} = useContext(AuthContext);
 
   return(
     <>
-      {isAuth ? <>
+      {getAuthLS() ? <>
         <MainAside />
         <main className="content main">
           <Outlet/>
