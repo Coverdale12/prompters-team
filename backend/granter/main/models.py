@@ -38,6 +38,23 @@ class Startup(models.Model):
     def __str__(self):
         return self.name
     
+    def __dict__(self):
+        return {
+            'id': self.id,
+            'user': self.user.id,
+            'organization': self.organization.id,
+            'name': self.name,
+            'description': self.description,
+           'status': self.status,
+           'region': self.region,
+            'industry': self.industry,
+            'direction': self.direction,
+            'budget': self.budget,
+            'publish_date': self.publish_date,
+            'finish_date': self.finish_date,
+            'days': self.days,
+        }
+    
     
 class OrganizationHasUser(models.Model):
     ROLE_CHOICES = [
