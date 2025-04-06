@@ -49,7 +49,7 @@ export default function Login({ isRegistration = false }) {
 
 function RegistrationForm() {
   return (
-    <form action="" className="form login">
+    <form className="form login">
       <DropList id="typeUser" labelText="Я">{{
         executor: "Исполнитель",
         customer: "Заказчик"
@@ -72,7 +72,7 @@ function RegistrationForm() {
 }
 function LoginForm() {
   return (
-    <form action="" className="form login">
+    <form action="http://localhost:8000/auth" className="form login">
       <Entry
         id="email"
         labelText="Введите почту"
