@@ -1,5 +1,6 @@
 import AppCard from "./AppCard/AppCard"
 import { objectStartUpEmulator } from "./startup" //Эмулятор данных с бэка
+import "./Applications.scss"
 
 export default function Applications() {
 

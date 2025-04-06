@@ -1,0 +1,16 @@
+@import "../../../sass/abstracts/abstracts";
+
+.applications{
+  width: 100%;
+  overflow: scroll;
+  &__wrapper{
+    padding: 1rem
+  }
+  &__list{
+    @include flexible(column);
+    row-gap: 1.2rem;
+  }
+  &__item{
+    @include flexible();
+  }
+}

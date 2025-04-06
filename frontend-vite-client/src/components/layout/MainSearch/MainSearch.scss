@@ -1,11 +1,22 @@
 @import "../../../sass/abstracts/abstracts";
 
 .field-search{
+  @include flexible();
+  font-family: $font-family-base;
+
   &__input{
+    @include flexible();
     background-color: $color-green-light;
     border: none;
     padding: 1rem;
     padding-right: 0;
     border-radius: 1rem;
+    font-size: 1.3rem;
+  }
+  &__input::before{
+    @include flexible();
+    content: "sdds";
+    width: 18px;
+    height: 18px; 
   }
 }

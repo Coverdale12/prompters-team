@@ -18,4 +18,16 @@
     @include hoverEffect(background-color, darken($color-magenta, 20%));
     border: 9px solid $color-light;
   }
+  &:has(svg){
+    background-color: transparent;
+    color: $color-dark;
+    @include hoverEffect(color, $color-magenta);
+    @include hoverEffect(transform, scale(110%));
+    @include hoverEffect(background-color, transparent);
+  }
+  svg{
+    pointer-events: none;
+    width: 35px;
+    height: 35px;
+  }
 }
