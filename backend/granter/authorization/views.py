@@ -14,7 +14,15 @@ def auth_view(request):
                 profile = Profile.objects.get(email=email)
                 if profile.password == password:
                     token, created = Token.objects.get_or_create(user_id=profile.id)
-                    return JsonResponse({'token': token.token})
+                    profile_dict = dict(filter(
+                        lambda x: not x[0].startswith('_'),
+                        profile.__dict__.items(),
+                    ))
+                    print(profile_dict)
+                    return JsonResponse({
+                        'token': token.token,
+                        'profile': profile_dict,
+                    })
                 else:
                     return JsonResponse({'error': 'Invalid password'}, status=401)
             except Profile.DoesNotExist:
