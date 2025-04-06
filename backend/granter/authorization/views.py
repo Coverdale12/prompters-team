@@ -1,5 +1,4 @@
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import *
 import json
@@ -10,10 +9,16 @@ def auth_view(request):
             data = json.loads(request.body)
             email = data.get('email')
             password = data.get('password')
-            response = {
-                'token': data,
-            }
-            return JsonResponse(response, status=400)
+            
+            try:
+                profile = Profile.objects.get(email=email)
+                if profile.password == password:
+                    token, created = Token.objects.get_or_create(profile=profile)
+                    return JsonResponse({'token': token.token})
+                else:
+                    return JsonResponse({'error': 'Invalid password'}, status=401)
+            except Profile.DoesNotExist:
+                return JsonResponse({'error': 'Email not found'}, status=401)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     else:
