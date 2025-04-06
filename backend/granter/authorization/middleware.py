@@ -7,7 +7,8 @@ class TokenAuthenticationMiddleware:
 
     def __call__(self, request):
         # Exclude the login URL from token authentication
-        if request.path == '/authorization/auth/':
+        print(request.path)
+        if request.path == '/authorization/auth/' or request.path == '/authorization/register/' or request.path.startswith('/admin/'):
             return self.get_response(request)
 
         auth_header = request.headers.get('Authorization')
