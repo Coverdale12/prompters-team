@@ -1,0 +1,45 @@
+@import "../../../../sass/abstracts/abstracts";
+
+.app-card{
+  @include flexible(column);
+  padding: 1.2rem;
+  border-radius: $border-radius-base;
+  font-family: $font-family-base;
+  border: $color-gray-dark 2px solid;
+  width: 100%;
+  @include hoverEffect(background-color, $color-pink);
+  &__header{
+    @include flexible($al-items: center);
+    width: 100%;
+    .button:last-child{
+      margin-left: auto;
+    }
+  }
+  &__title{
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+  &__body{
+    @include flexible($al-items: start);
+    margin-block: 1rem;
+  }
+  &__money{
+    @include flexible(column, $al-items: center);
+    font-size: 1.8rem;
+    margin-left: auto;
+    row-gap: 0.5rem;
+    font-weight: 700;
+    svg{
+      color: $color-green-light;
+    }
+  }
+  &__table{
+    @include flexible($just-cont: space-between);
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  &__name{
+    font-size: 1.8rem;
+  }
+}

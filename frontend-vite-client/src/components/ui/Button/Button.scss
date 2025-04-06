@@ -1,0 +1,33 @@
+@import "../../../sass/abstracts/abstracts";
+
+.button{
+  cursor: pointer;
+  user-select: none;
+  @include flexible();
+  font-family: $font-family-base;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  border: none;
+  background-color: $color-green-light;
+  transition-duration: $transition-duration-button;
+  border-radius: $border-radius-middle;
+  @include hoverEffect(background-color, darken($color-green-light, 20%));
+  color: $color-gray;
+  &.purple{
+    background-color: $color-magenta;
+    @include hoverEffect(background-color, darken($color-magenta, 20%));
+    border: 9px solid $color-light;
+  }
+  &:has(svg){
+    background-color: transparent;
+    color: $color-dark;
+    @include hoverEffect(color, $color-magenta);
+    @include hoverEffect(transform, scale(110%));
+    @include hoverEffect(background-color, transparent);
+  }
+  svg{
+    pointer-events: none;
+    width: 35px;
+    height: 35px;
+  }
+}

@@ -1,0 +1,47 @@
+//core
+@import 'core/reset';
+@import 'core/typography';
+//abstracts
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/utils';
+
+// root
+#root{
+  @include flexible();
+  height: 100%;
+}
+#root:has(.main-aside){
+  @include flexible();
+
+}
+html, body{
+  background-color: $color-magenta;
+  height: 100%;
+  background-image: url('../assets/images/background.svg') ;
+  background-attachment:fixed;
+  background-size:cover; 
+  background-position: -100% -100%;
+}
+.section.login{
+  @include flexible();
+  width: 100%;
+  margin-top: 10%;
+}
+.container{
+  margin-inline: auto;
+  max-width: $container-max-width + ($container-padding-x * 2);
+  padding-inline: 15px;
+}
+.content{
+  @include flexible(column, $al-items: center);
+  width: 100%;
+  &.main{
+    background-color: $color-gray;
+    border-radius: $border-radius-base;
+    margin: 1rem;
+  }
+}
+
+// components

@@ -1,0 +1,19 @@
+@import "../../../sass/abstracts/abstracts";
+
+.logotype{
+  @include flexible(row, $al-items: center);
+  column-gap: 1rem;
+  text-decoration: none;
+  transition-duration: $transition-duration-button;
+  @include hoverEffect(filter, blur(3px));
+  &__title{
+    text-transform: uppercase;
+    color: $color-gray;
+    font-size: 4rem;
+    font-family: $font-family-base;
+    @media screen and (width < 800px){
+      $vw-value: 4*16/800*100;
+      font-size: clamp(2rem, #{$vw-value}vw, 4rem);
+    }
+  }
+}
