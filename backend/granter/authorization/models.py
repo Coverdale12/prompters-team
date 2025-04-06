@@ -1,10 +1,10 @@
 from django.db import models
 
 class Profile(models.Model):
-    username = models.CharField(max_length=16)
-    name = models.CharField(max_length=32)
+    username = models.TextField()
+    name = models.TextField()
     telegram_id = models.IntegerField(null=True)
     email = models.EmailField()
-    password = models.CharField(max_length=32)
-    role = models.CharField(max_length=16)
+    password = models.TextField()
+    role = models.TextField()
     avatar = models.ImageField(null=True)

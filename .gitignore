@@ -26,4 +26,4 @@ dist-ssr
 *.sln
 *.sw?
 
-.vscode
+backend/granter/*/__pycache__
