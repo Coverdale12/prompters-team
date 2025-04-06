@@ -7,7 +7,7 @@ class TokenAuthenticationMiddleware:
 
     def __call__(self, request):
         print(request.path)
-        if True:
+        if not any([request.path.startswith(p) for p in ('/main/startups')]):
             return self.get_response(request)
 
         # Exclude the login URL from token authentication
@@ -19,7 +19,7 @@ class TokenAuthenticationMiddleware:
             token = auth_header.split(' ')[1]
             try:
                 Token.objects.get(token=token)
-                request.user_id = Token.objects.get(token=token).profile.id
+                request.user_id = Token.objects.get(token=token).user_id
             except Token.DoesNotExist:
                 return JsonResponse({'error': 'Invalid token'}, status=401)
         else:
