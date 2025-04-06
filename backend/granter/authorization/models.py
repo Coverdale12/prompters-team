@@ -8,3 +8,4 @@ class Profile(models.Model):
     password = models.TextField()
     role = models.TextField()
     avatar = models.ImageField(null=True)
+
