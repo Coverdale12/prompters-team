@@ -7,7 +7,7 @@ class TokenAuthenticationMiddleware:
 
     def __call__(self, request):
         print(request.path)
-        if not any([request.path.startswith(p) for p in ('/main/startups')]):
+        if not any([request.path.startswith(p) for p in ('/main/startups',)]):
             return self.get_response(request)
 
         # Exclude the login URL from token authentication
