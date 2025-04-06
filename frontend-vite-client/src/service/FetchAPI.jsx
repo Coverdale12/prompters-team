@@ -24,14 +24,15 @@ export async function getStartAppCards() {
   try {
     const response = await axios.get(`${urlAPI}/main/startups/`, {
       headers: {
-        "Content-Type": 'application/json'
+        "Content-Type": 'application/json',
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
       }
     })
     if (response.status === 401){
       throw "401"
     }
     return response.data
-    
+
   } catch (error) {
     throw error
   }

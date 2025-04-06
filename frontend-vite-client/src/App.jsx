@@ -12,14 +12,12 @@ import { AuthContext } from './context/AuthContext'
 // Components
 import Login from './components/pages/Login/Login'
 import Preview from './components/pages/Preview/Preview'
-import Main from './components/pages/Main/Main'
 import Applications from './components/layout/Applications/Applications'
 import MainAside from './components/layout/MainAside/MainAside'
+import StartApp from './components/layout/StartApp/StartApp'
 
 
 export default function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <AuthProvider>
@@ -30,14 +28,16 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Login isRegistration={true} />} />
             <Route path="/preview" element={<Preview />} />
+            <Route path="/" element={<Navigate to="/preview"/>}/>
 
             {/* защищенные роуты */}
             <Route path="/user" element={<ProtectedRoutes/>}> 
               <Route index element={<Applications/>}/>
+              {/* <Route path="/startapp" element={<StartApp/>}/> */}
             </Route>
 
-
-            <Route path="*" element={<Navigate to="/" replace />} />
+            
+            <Route path="*" element={<Navigate to="/"/>} />
           </Routes>
         </Router>
       </AuthProvider>
