@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find friends</title>
+    <link rel="stylesheet" href="{% static 'css/findfriends.css' %}">
+    <script src="{% static 'js/findfriends.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="add-new-friends">
+        {% if user.is_authenticated %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form autocomplete="off" class="form" action="user2" method="post">
+            {% csrf_token %}
+            <div class="autocomplete">
+                <input id="myInput" type="text" name="username" placeholder="Type username">
+            </div>
+            <input type="submit" value="Inspect">
+        </form>
+        <!-- requests div starts here -->
+        <div id="animatedDiv" class="requests">
+            <div class="sent-requests">
+                <h3>Requests Recived {{ countOfSenders }} </h3>
+                {% if countOfSenders != 0 %}
+                {% for request in requests_recieved %}
+                <div class="request">
+                    <h4><a href="user/{{ request.sender }}">Request from : <b> {{ request.sender }}</b></a></h4>
+                    {% if request.status == "accepted" %}
+                    <p class="accepted">Accepted</p>
+                    {% elif request.status == "rejected" %}
+                    <p class="rejected">Rejected</p>
+                    {% else %}
+                    <p class="btns"> <a class="accept" href="accept/{{ request.sender }}">Accept</a> <a class="reject"
+                            href="reject/{{ request.sender }}">Reject</a></p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="recived-requests">
+                <h3>Requests Sent {{ countOfRecivers }} </h3>
+                {% if countOfRecivers != 0 %}
+                {% for request in requests_sent %}
+                <div class="request">
+                    <h4> <a href="user/{{ request.reciever }}">Request to : <b>{{ request.reciever }}</b> </a></h4>
+                    <p class="{{ request.status }}">{{ request.status }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <!-- request div ends here -->
+        <div class="friendlist">
+            <div class="title-noti">
+                <h2 class="title-2">My friends {{ total_friends }}</h2> <i id="toggleBtn"
+                    class="ri-notification-2-line"></i>
+            </div>
+            <ul>
+                {% for friend in friend_list %}
+                {% if friend.sender != user.username %}
+                <li class="list-view"><i class="ri-user-3-fill"></i><a href="user/{{ friend.sender }}"> {{ friend.sender }}</a></li>
+                {% endif %}
+                {% if friend.reciever != user.username %}
+                <li class="list-view"><i class="ri-user-3-fill"></i> <a href="user/{{ friend.reciever }}"> {{friend.reciever }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% else %}
+        <a href="login">Login to find friends</a>
+        {% endif %}
+    </div>
+
+
+</body>
+<script>
+    var users = {{ users | safe }};
+
+    autocomplete(document.getElementById("myInput"), users);
+    const toggleBtn = document.getElementById("toggleBtn");
+    const animatedDiv = document.getElementById("animatedDiv");
+
+    toggleBtn.addEventListener("click", function () {
+        if (animatedDiv.style.display === "none") {
+            animatedDiv.style.display = "flex";
+        } else {
+            animatedDiv.style.display = "none";
+        }
+    });
+
+</script>
+
+</html>
